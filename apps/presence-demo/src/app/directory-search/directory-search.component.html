@@ -1,0 +1,25 @@
+<h5>Directory search ({{(members$ | async)?.length}})</h5>
+
+<div class="input-group mb-2">
+  <input type="text" class="form-control" id="search" placeholder="Just type a name..." title="If you find directory entries a background job retrieves presence states soon automatically." autofocus #searchInput>
+  <div class="input-group-append">
+    <span class="input-group-text"><fa-icon [icon]="faSearch"></fa-icon></span>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <th scope="col">#</th>
+  <th scope="col">Name</th>
+  <th scope="col">Phone</th>
+  <th scope="col">&nbsp;</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let m of (members$ | async); let i=index">
+    <td>{{i+1}}</td>
+    <td>{{m.name}}</td>
+    <td>{{m.phone}}</td>
+  </tr>
+  </tbody>
+</table>
+

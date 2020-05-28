@@ -1,0 +1,29 @@
+<h5>Presence search ({{items.length}})</h5>
+
+<form #f="ngForm"	(ngSubmit)="search(f)">
+  <div class="input-group mb-2">
+    <input type="text" class="form-control" id="search" placeholder="Search" autofocus ngModel name="search" #searchInput>
+    <div class="input-group-append">
+      <button type="submit" class="btn, btn-primary"><fa-icon [icon]="faSearch"></fa-icon></button>
+    </div>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+  <th scope="col">#</th>
+  <th scope="col">ID</th>
+  <th scope="col">State</th>
+  <th scope="col">Sub-State</th>
+  <th scope="col">&nbsp;</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let i of items; let idx=index">
+    <td>{{idx+1}}</td>
+    <td>{{i.id}}</td>
+    <td><div [style.background-color]="i.state">&nbsp;</div></td>
+    <td>{{i.subStates}}</td>
+  </tr>
+  </tbody>
+</table>
+
