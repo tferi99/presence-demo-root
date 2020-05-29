@@ -1,5 +1,3 @@
-import { Subject } from 'rxjs';
-
 export interface CommonData {
   code: number;
   message: string;
@@ -29,3 +27,6 @@ export interface PresenceItem {
   subStates: string[]
 }
 
+export interface AppConfig {
+  autoChangePresenceStates: boolean;
+}

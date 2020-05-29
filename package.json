@@ -47,7 +47,6 @@
     "@nestjs/core": "^6.8.3",
     "@nestjs/platform-express": "^6.8.3",
     "@nestjs/schedule": "^0.4.0",
-    "@nestjs/websockets": "^7.1.0",
     "@ngrx/effects": "^9.2.0",
     "@ngrx/entity": "^9.2.0",
     "@ngrx/schematics": "^9.2.0",

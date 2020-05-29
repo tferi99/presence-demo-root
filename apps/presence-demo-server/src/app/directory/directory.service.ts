@@ -1,5 +1,4 @@
 import { Injectable, Logger } from '@nestjs/common';
-import * as _ from 'lodash';
 import { DirectoryMember } from '@presence-demo-root/common-data';
 
 const firstnames = [

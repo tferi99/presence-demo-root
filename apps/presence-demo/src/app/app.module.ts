@@ -16,6 +16,8 @@ import { environment } from '../environments/environment';
 import { PresenceModule } from './presence/presence.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpErrorInterceptor } from './core/http-error.interceptor';
+import { EffectsModule } from '@ngrx/effects';
+import { ConfigModule } from './config/config.module';
 
 @NgModule({
   declarations: [AppComponent, DirectorySearchComponent, Page404Component],
@@ -28,10 +30,12 @@ import { HttpErrorInterceptor } from './core/http-error.interceptor';
     FontAwesomeModule,
     FormsModule,
     PresenceModule,
+    ConfigModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

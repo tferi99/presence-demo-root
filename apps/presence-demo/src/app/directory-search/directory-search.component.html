@@ -1,7 +1,7 @@
 <h5>Directory search ({{(members$ | async)?.length}})</h5>
 
 <div class="input-group mb-2">
-  <input type="text" class="form-control" id="search" placeholder="Just type a name..." title="If you find directory entries a background job retrieves presence states soon automatically." autofocus #searchInput>
+  <input type="text" class="form-control" id="search" placeholder="Just type a name..." title="If you find directory entries a background job retrieves presence states soon automatically." autofocus [ngModel]="directoryService.previousNameSearch" #searchInput>
   <div class="input-group-append">
     <span class="input-group-text"><fa-icon [icon]="faSearch"></fa-icon></span>
   </div>

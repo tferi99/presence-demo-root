@@ -7,6 +7,8 @@ import { DirectoryController } from './directory/directory.controller';
 import { DirectoryService } from './directory/directory.service';
 import { PresenceService } from './presence/presence.service';
 import { PresenceController } from './presence/presence.controller';
+import { ConfigService } from './config/config.service';
+import { ConfigController } from './config/config.controller';
 
 @Module({
   imports: [
@@ -15,12 +17,14 @@ import { PresenceController } from './presence/presence.controller';
   controllers: [
     AppController,
     DirectoryController,
-    PresenceController
+    PresenceController,
+    ConfigController
   ],
   providers: [
     AppService,
     DirectoryService,
-    PresenceService
+    PresenceService,
+    ConfigService
   ],
 })
 export class AppModule {}

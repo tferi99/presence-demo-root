@@ -1,12 +1,16 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { DirectoryMember, PresenceItem, PresenceState } from '@presence-demo-root/common-data';
 import { Cron } from '@nestjs/schedule';
+import { ConfigService } from '../config/config.service';
 
 @Injectable()
 export class PresenceService {
   private readonly log = new Logger(PresenceService.name);
   items: PresenceItem[] = [];
   stateChanges = 0;
+
+  constructor(private configService: ConfigService) {
+  }
 
   init(directoryMembers: DirectoryMember[]) {
     this.log.debug(`Initialization presence source entries for ${directoryMembers.length} directory entries`);
@@ -21,11 +25,13 @@ export class PresenceService {
 
   }
 
-  //@Cron('0,10,20,30,40,50 * * * * *')
   @Cron('0,30 * * * * *')
   changePresenceState() {
+    if(!this.configService.getConfig().autoChangePresenceStates) {
+      return;
+    }
     this.stateChanges++;
-    this.log.debug(`[${this.stateChanges}]Presence state changing...`);
+    this.log.debug(`[${this.stateChanges}]Presence state changing by background job...`);
 
     const stateValues = this.items.values();
     this.items.forEach(ps => {

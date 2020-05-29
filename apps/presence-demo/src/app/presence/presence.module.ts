@@ -4,9 +4,9 @@ import { PresenceSearchComponent } from './presence-search/presence-search.compo
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
-import * as fromPresence from './reducers';
-
-
+import * as fromPresence from './presence.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PresenceEffects } from './presence.effects';
 
 @NgModule({
   declarations: [PresenceSearchComponent],
@@ -14,7 +14,8 @@ import * as fromPresence from './reducers';
     CommonModule,
     FormsModule,
     FontAwesomeModule,
-    StoreModule.forFeature(fromPresence.presenceFeatureKey, fromPresence.reducers, { })
+    StoreModule.forFeature(fromPresence.presenceFeatureKey, fromPresence.reducer),
+    EffectsModule.forFeature([PresenceEffects]),
   ]
 })
 export class PresenceModule { }
