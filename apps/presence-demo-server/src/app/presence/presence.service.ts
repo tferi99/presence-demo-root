@@ -15,7 +15,7 @@ export class PresenceService {
   init(directoryMembers: DirectoryMember[]) {
     this.log.debug(`Initialization presence source entries for ${directoryMembers.length} directory entries`);
     directoryMembers.forEach(dm => {
-        const item: PresenceItem = {id: dm.name, state: PresenceState.NA, subStates: ['1', '2', '3']};
+        const item: PresenceItem = {id: dm.name, state: PresenceState.INITIAL, subStates: ['1', '2', '3']};
         this.items.push(item);
       }
     )
@@ -76,7 +76,7 @@ export class PresenceService {
   //--------------------------------------- helpers ----------------------------------
   private getRandomState = (enumeration) => {
     const values = Object.keys(enumeration);
-    const enumKey = values[Math.floor(Math.random() * values.length)];
+    const enumKey = values[Math.floor(Math.random() * (values.length - 1)) + 1];    // don't return INITIAL (1st item)
     return enumeration[enumKey];
   }
 }

@@ -1,4 +1,9 @@
 <h5>Directory search ({{(members$ | async)?.length}})</h5>
+<div class="mb-2">
+  <button class="btn btn-danger mr-2" (click)="killAllPresence()">Kill all presence</button>
+  <button class="btn btn-warning mr-2" (click)="keepalive()">Keep-alive</button>
+  <button class="btn btn-outline-secondary mr-2" (click)="test()">test</button>
+</div>
 
 <div class="input-group mb-2">
   <input type="text" class="form-control" id="search" placeholder="Just type a name..." title="If you find directory entries a background job retrieves presence states soon automatically." autofocus [ngModel]="directoryService.previousNameSearch" #searchInput>
@@ -12,13 +17,16 @@
   <th scope="col">#</th>
   <th scope="col">Name</th>
   <th scope="col">Phone</th>
-  <th scope="col">&nbsp;</th>
+  <th scope="col">Presence</th>
   </thead>
   <tbody>
-  <tr *ngFor="let m of (members$ | async); let i=index">
+  <tr *ngFor="let m of searchResult; let i=index">
     <td>{{i+1}}</td>
     <td>{{m.name}}</td>
     <td>{{m.phone}}</td>
+    <td><div *ngIf="(getPresenceByIdSelector(m.name) | async) as presence">
+      <div [style.background-color]="presence.state">&nbsp;</div>&nbsp;<span *ngIf="presence.lastKeepAlive">{{presence.lastKeepAlive}}</span>
+    </div></td>
   </tr>
   </tbody>
 </table>

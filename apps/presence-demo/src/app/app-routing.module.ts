@@ -5,11 +5,12 @@ import { NgModule } from '@angular/core';
 import { PresenceSearchComponent } from './presence/presence-search/presence-search.component';
 import { ConfigComponent } from './config/config/config.component';
 import { ConfigResolver } from './config/ConfigResolver';
+import { PresenceInStoreComponent } from './presence/presence-in-store/presence-in-store.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/directory', pathMatch: 'full' },   // default
-  { path: 'directory', component: DirectorySearchComponent },
   { path: 'presence', component: PresenceSearchComponent },
+  { path: 'presenceinstore', component: PresenceInStoreComponent},
   { path: 'config', component: ConfigComponent, resolve: {config: ConfigResolver} },
   { path: '**', component: Page404Component}
 ];

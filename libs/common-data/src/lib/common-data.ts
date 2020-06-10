@@ -4,7 +4,7 @@ export interface CommonData {
 }
 
 export enum PresenceState {
-  NA = 'white',
+  INITIAL = 'transparent',
   Free = 'green',
   Tentative = 'blue',
   Busy = 'red',

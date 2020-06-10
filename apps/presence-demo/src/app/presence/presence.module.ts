@@ -7,9 +7,10 @@ import { StoreModule } from '@ngrx/store';
 import * as fromPresence from './presence.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PresenceEffects } from './presence.effects';
+import { PresenceInStoreComponent } from './presence-in-store/presence-in-store.component';
 
 @NgModule({
-  declarations: [PresenceSearchComponent],
+  declarations: [PresenceSearchComponent, PresenceInStoreComponent],
   imports: [
     CommonModule,
     FormsModule,

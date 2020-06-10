@@ -12,13 +12,22 @@ const surnames = [
   'Martin', 'Jackson', 'Clarke', 'Adams', 'Allen', 'Atkinson', 'Brooks', 'Collins', 'Elliott', 'Morrison'
 ];
 
+const fixedItems: DirectoryMember[] = [
+  {name: 'John 1', phone: '+11-345-4564'},
+  {name: 'John 2', phone: '+11-454-4854'},
+  {name: 'John 3', phone: '+11-943-2334'},
+  {name: 'Jane 1', phone: '+12-678-4545'},
+  {name: 'Jane 2', phone: '+12-784-4865'},
+];
+
 @Injectable()
 export class DirectoryService {
   private readonly log = new Logger(DirectoryService.name);
   members: Map<string, string> = new Map();
 
   init() {
-    this.members = this.generateMembers(1000);
+    //this.members = this.generateMembers(1000);
+    fixedItems.forEach(m => this.members.set(m.name, m.phone));
   }
 
   getAll(): DirectoryMember[] {
